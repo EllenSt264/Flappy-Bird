@@ -14,6 +14,14 @@ or add multipliers to create parallax effect
 with parallax everything moves at a slightly different speed but relative to each other */
 let gamespeed = 2;
 
+// Score color gradient
+const gradient = ctx.createLinearGradient(0, 0, 0, 70);
+gradient.addColorStop("0.4", "#fff");
+gradient.addColorStop("0.5", "#000");
+gradient.addColorStop("0.55", "#4040ff");
+gradient.addColorStop("0.6", "#000");
+gradient.addColorStop("0.9", "#fff");
+
 
 function animate() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -21,6 +29,13 @@ function animate() {
     handleObstacles();
     bird.update();
     bird.draw();
+
+    // Score
+    ctx.fillStyle = gradient;
+    ctx.font = "90px Georgia";
+    ctx.strokeText(score, 450, 70);
+    ctx.fillText(score, 450, 70);
+
     handleCollisions();
     if (handleCollisions()) return;     // if handleCollisions is true which will prevent the animate function from calling the next requestAnimationFrame; animation loop will stop
     handleParticles();
