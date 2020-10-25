@@ -108,7 +108,7 @@ function handleCollisions() {
                 ) {
 
                 // COLLISION DETECTED
-                ctx.drawImage(bang, bird.x, bird.y, 50, 50); // draw at x and y coordinates of the bird
+                ctx.drawImage(bang, bird.x, bird.y, 60, 60); // draw at x and y coordinates of the bird
                 // Gameover text
                 ctx.font = "25px Georgia";
                 ctx.fillStyle = "white";
