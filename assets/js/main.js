@@ -18,12 +18,14 @@ let gamespeed = 2;
 function animate() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     //ctx.fillRect(10, 10, 50, 50);    // draws a rectangle that will represent our player, for now, at coordinates 10 10 and width/height of 50
+    handleObstacles();
     bird.update();
     bird.draw();
     handleParticles();
     requestAnimationFrame(animate);
     angle += 0.12;
     hue++;
+    frame++;    // increase framecount by 1 for every animation loop cycle
 }
 
 animate();
