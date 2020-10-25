@@ -38,7 +38,6 @@ class Bird {
     // safeguards to ensure the player can't leave the screen
     draw() {
         ctx.fillStyle = "red";
-        //ctx.fillRect(this.x, this.y, this.width, this.height);
         ctx.drawImage(dragonSprite, this.frameX * this.originalWidth, 0, this.originalWidth, this.originalHeight, this.x - 20, this.y - 12, 
             this.width * 1.7, this.height * 1.7);
     }
