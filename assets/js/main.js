@@ -47,10 +47,14 @@ bang.src = "../assets/img/bang.png"
 
 function handleCollisions() {
     for (let i = 0; i < obstaclesArray.length; i++) {
-        if (bird.x < obstaclesArray[i].x + obstaclesArray[i].width &&
+        if (
+            bird.x < obstaclesArray[i].x + obstaclesArray[i].width &&
             bird.x + bird.width > obstaclesArray[i].x &&
             ((bird.y < 0 + obstaclesArray[i].top && bird.y + bird.height > 0) ||
-            (bird.y + bird.height < canvas.height))) {
+            (bird.y > canvas.height - obstaclesArray[i].bottom &&
+                bird.y + bird.height < canvas.height))
+                ) {
+
                 // COLLISION DETECTED
                 ctx.drawImage(bang, bird.x, bird.y, 50, 50); // draw at x and y coordinates of the bird
                 return true;
