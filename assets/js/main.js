@@ -21,6 +21,8 @@ function animate() {
     handleObstacles();
     bird.update();
     bird.draw();
+    handleCollisions();
+    if (handleCollisions()) return;     // if handleCollisions is true which will prevent the animate function from calling the next requestAnimationFrame; animation loop will stop
     handleParticles();
     requestAnimationFrame(animate);
     angle += 0.12;
@@ -37,3 +39,21 @@ window.addEventListener("keydown", function(e) {
 window.addEventListener("keyup", function(e) {
     if (e.code === "Space") spacePressed = false;
 });
+
+// collision
+
+const bang = new Image();
+bang.src = "../assets/img/bang.png"
+
+function handleCollisions() {
+    for (let i = 0; i < obstaclesArray.length; i++) {
+        if (bird.x < obstaclesArray[i].x + obstaclesArray[i].width &&
+            bird.x + bird.width > obstaclesArray[i].x &&
+            ((bird.y < 0 + obstaclesArray[i].top && bird.y + bird.height > 0) ||
+            (bird.y + bird.height < canvas.height))) {
+                // COLLISION DETECTED
+                ctx.drawImage(bang, bird.x, bird.y, 50, 50); // draw at x and y coordinates of the bird
+                return true;
+            }
+    }
+}
