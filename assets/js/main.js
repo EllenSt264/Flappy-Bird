@@ -20,6 +20,7 @@ function animate() {
     //ctx.fillRect(10, 10, 50, 50);    // draws a rectangle that will represent our player, for now, at coordinates 10 10 and width/height of 50
     bird.update();
     bird.draw();
+    handleParticles();
     requestAnimationFrame(animate);
     angle += 0.12;
 }
