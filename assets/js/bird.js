@@ -14,10 +14,18 @@ class Bird {
         if (this.y > canvas.height - this.height) {
             this.y = canvas.height - this.height;
             this.vy = 0;
+        } 
+        else {
+            // this makes the player fall down - the longer it falls; the faster it falls
+            this.vy += this.weight;
+            this.vy *= 0.9      // to make the speed more manageable
+            this.y += this.vy;
         }
-        // this makes the player fall down - the longer it falls; the faster it falls
-        this.vy += this.weight;
-        this.y += this.vy;
+        if (this.y < 0 + this.height) {
+            this.y = 0 + this.height;
+            this.vy = 0;
+        }
+        if (spacePressed) this.flap();
     }
 
     // safeguards to ensure the player can't leave the screen
