@@ -10,6 +10,11 @@ class Bird {
 
     // calculate position and speed of player bid for each frame of animation
     update() {
+        // implement restrictions to ensure the player stays within the canvas
+        if (this.y > canvas.height - this.height) {
+            this.y = canvas.height - this.height;
+            this.vy = 0;
+        }
         // this makes the player fall down - the longer it falls; the faster it falls
         this.vy += this.weight;
         this.y += this.vy;
