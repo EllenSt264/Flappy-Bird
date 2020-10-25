@@ -111,7 +111,7 @@ function handleCollisions() {
                 ctx.drawImage(bang, bird.x, bird.y, 50, 50); // draw at x and y coordinates of the bird
                 // Gameover text
                 ctx.font = "25px Georgia";
-                ctx.fillStyle = "black";
+                ctx.fillStyle = "white";
                 ctx.fillText("Game Over! Your score is " + score, 
                 160, canvas.height / 2);    // x position is 60 and y position is in the middle of the canvas
                 return true;
