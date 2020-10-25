@@ -14,6 +14,7 @@ or add multipliers to create parallax effect
 with parallax everything moves at a slightly different speed but relative to each other */
 let gamespeed = 2;
 
+
 function animate() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.fillRect(10, 10, 50, 50);    // draws a rectangle that will represent our player, for now, at coordinates 10 10 and width/height of 50
@@ -21,3 +22,11 @@ function animate() {
 }
 
 animate();
+
+window.addEventListener("keydown", function(e) {
+    if (e.code === "Space") spacePressed = true;
+});
+
+window.addEventListener("keyup", function(e) {
+    if (e.code === "Space") spacePressed = false;
+});
