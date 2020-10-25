@@ -23,9 +23,46 @@ gradient.addColorStop("0.6", "#000");
 gradient.addColorStop("0.9", "#fff");
 
 
+
+/* Background 
+
+Going to draw two backgrounds right next to eachother with both backgrounds 
+moving to the left as the game scrolls to the right
+it will then quickly jump back behind the right edge 
+so it is ready to slide left again */
+
+const background = new Image();
+background.src = "../assets/img/background.png"
+const  bg = {
+    x1: 0,              // horizontal x-axis position for the first background
+    x2: canvas.width,   // horizontal x-axis position for the second background
+    y: 0,           // vertical position - we want the background to start from the top edge so Y will always be zero
+    width: canvas.width,
+    height: canvas.height
+}   
+
+function handleBackground() {
+    if (bg.x1 <= -bg.width + gamespeed) {
+        bg.x1 = bg.width;
+    }
+    else {
+        bg.x1 -= gamespeed;
+    }
+    if (bg.x2 <= -bg.width + gamespeed) {
+        bg.x2 = bg.width;
+    }
+    else {
+        bg.x2 -= gamespeed;
+    }
+    ctx.drawImage(background, bg.x1, bg.y, bg.width, bg.height);
+    ctx.drawImage(background, bg.x2, bg.y, bg.width, bg.height);
+}
+
+
 function animate() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     //ctx.fillRect(10, 10, 50, 50);    // draws a rectangle that will represent our player, for now, at coordinates 10 10 and width/height of 50
+    handleBackground();
     handleObstacles();
     bird.update();
     bird.draw();
