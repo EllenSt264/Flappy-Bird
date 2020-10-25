@@ -21,7 +21,7 @@ function animate() {
     bird.update();
     bird.draw();
     requestAnimationFrame(animate);
-    angle++;
+    angle += 0.12;
 }
 
 animate();
