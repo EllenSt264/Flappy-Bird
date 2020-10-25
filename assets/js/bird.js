@@ -12,8 +12,8 @@ class Bird {
     update() {
         let curve = Math.sin(angle) * 20;
         // implement restrictions to ensure the player stays within the canvas
-        if (this.y > canvas.height - (this.height * 2) + curve) {
-            this.y = canvas.height - (this.height * 2) + curve;
+        if (this.y > canvas.height - (this.height * 3) + curve) {
+            this.y = canvas.height - (this.height * 3) + curve;
             this.vy = 0;
         } 
         else {
