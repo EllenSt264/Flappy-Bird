@@ -89,7 +89,8 @@ window.addEventListener("keydown", function(e) {
 });
 
 window.addEventListener("keyup", function(e) {
-    if (e.code === "Space") spacePressed = false;
+    if (e.code === "Space") spacePressed = false;   
+    bird.frameX = 0;        // allows the frame animation to reset when spacebar is released
 });
 
 // collision
