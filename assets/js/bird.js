@@ -10,9 +10,10 @@ class Bird {
 
     // calculate position and speed of player bid for each frame of animation
     update() {
+        let curve = Math.sin(angle) * 20;
         // implement restrictions to ensure the player stays within the canvas
-        if (this.y > canvas.height - this.height) {
-            this.y = canvas.height - this.height;
+        if (this.y > canvas.height - (this.height * 2) + curve) {
+            this.y = canvas.height - (this.height * 2) + curve;
             this.vy = 0;
         } 
         else {
@@ -25,7 +26,7 @@ class Bird {
             this.y = 0 + this.height;
             this.vy = 0;
         }
-        if (spacePressed) this.flap();
+        if (spacePressed && this.y > this.height * 2) this.flap();
     }
 
     // safeguards to ensure the player can't leave the screen
